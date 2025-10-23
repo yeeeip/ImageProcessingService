@@ -1,0 +1,4 @@
+minio:
+  host: http://localhost:9000
+  secret-key: root
+  access-key: 12345678
