@@ -2,10 +2,12 @@ package com.nuzhd.service.impl;
 
 import com.nuzhd.dto.ImageUploadResult;
 import com.nuzhd.service.ImageStoringService;
+import io.minio.GetObjectArgs;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
 import io.minio.errors.MinioException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,7 +44,20 @@ public class MinioStoringService implements ImageStoringService {
     }
 
     @Override
-    public void downloadImage() {
+    public byte[] downloadImage(String fileName) {
 
+        try {
+            var image = minioClient.getObject(
+                    GetObjectArgs.builder()
+                                 .bucket("test")
+                                 .object(fileName)
+                                 .build()
+            );
+
+            return image.readAllBytes();
+        } catch (IOException | MinioException | InvalidKeyException | NoSuchAlgorithmException e) {
+            log.error("Error while downloading file: {}\n{}", e.getMessage(), e.getStackTrace());
+            throw new RuntimeException(e);
+        }
     }
 }

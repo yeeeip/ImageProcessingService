@@ -7,6 +7,6 @@ public interface ImageStoringService {
 
     ImageUploadResult uploadImage(MultipartFile file);
 
-    void downloadImage();
+    byte[] downloadImage(String fileName);
 
 }

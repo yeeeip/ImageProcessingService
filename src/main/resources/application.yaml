@@ -1,4 +1,4 @@
 minio:
-  host: http://localhost:9000
-  secret-key: root
-  access-key: 12345678
+  host: ${MINIO_HOST}
+  access-key: ${MINIO_ACCESS_KEY}
+  secret-key: ${MINIO_SECRET_KEY}
