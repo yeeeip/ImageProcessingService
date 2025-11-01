@@ -2,9 +2,12 @@ package com.nuzhd.dto;
 
 import com.nuzhd.dto.constants.TransformationType;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 
 @Getter
-public class ResizeTransformation extends Transformation{
+@NoArgsConstructor
+public class ResizeTransformation extends Transformation {
 
     private Integer width;
     private Integer height;
