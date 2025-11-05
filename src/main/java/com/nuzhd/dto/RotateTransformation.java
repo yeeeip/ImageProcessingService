@@ -1,12 +1,13 @@
 package com.nuzhd.dto;
 
 import com.nuzhd.dto.constants.TransformationType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class RotateTransformation extends Transformation {
 
     private Integer degrees;
